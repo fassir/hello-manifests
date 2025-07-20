@@ -90,7 +90,7 @@ on:
 
 # Define as variáveis de ambiente que serão usadas no workflow
 env:
-  DOCKER_IMAGE_NAME: seu-usuario-docker/hello-app # Substitua 'seu-usuario-docker' pelo seu username do Docker Hub
+  DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/hello-app # Substitua 'seu-usuario-docker' pelo seu username do Docker Hub
   # A tag da imagem será gerada com o hash curto do commit, garantindo unicidade
   IMAGE_TAG: ${{ github.sha }}
 
@@ -143,8 +143,11 @@ Para que o GitHub Actions possa fazer login no Docker Hub e fazer um Pull Reques
     * Vá para o seu repositório `hello-app` no GitHub.
     * Clique em `Settings` (Configurações).
     * No menu lateral esquerdo, clique em `Secrets and variables` > `Actions`.
+    ![alt text](image.png)
     * Clique em `New repository secret`.
+    ![alt text](image-1.png)
     * Crie um segredo com o nome `DOCKER_USERNAME` e o valor do seu nome de usuário do Docker Hub.
+    ![alt text](image-2.png)
     * Crie outro segredo com o nome `DOCKER_PASSWORD` e o valor da sua senha do Docker Hub.
 
 2.  **SSH_PRIVATE_KEY**:
@@ -166,8 +169,11 @@ Para que o GitHub Actions possa fazer login no Docker Hub e fazer um Pull Reques
     * **Adicionar a chave privada como um segredo no repositório `hello-app`:**
         * Volte para o repositório `hello-app` no GitHub.
         * Vá para `Settings` > `Secrets and variables` > `Actions`.
+        ![alt text](image.png)
         * Clique em `New repository secret`.
+        ![alt text](image-1.png)
         * Crie um segredo com o nome `SSH_PRIVATE_KEY`.
+        ![alt text](image-2.png)
         * Cole o **conteúdo completo** do arquivo `~/.ssh/github_actions_rsa` (começa com `-----BEGIN OPENSSH PRIVATE KEY-----` e termina com `-----END OPENSSH PRIVATE KEY-----`). Certifique-se de copiar tudo, incluindo as linhas de `BEGIN` e `END`.
 
 3.  **Ter acesso de gravação ao repositório de manifests usado pelo ArgoCD:**
