@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: hello-app
-        image: fassir/hello-app:latest 
+        image: fassir/hello-app:f7cd0995042e4d549e694cbb39c3f6138d02da96
         ports:
         - containerPort: 8000
